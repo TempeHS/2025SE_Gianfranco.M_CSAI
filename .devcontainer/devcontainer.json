@@ -56,5 +56,5 @@
       ]
     }
   },
-  "forwardPorts": [8888]
+  "forwardPorts": [5000]
 }
