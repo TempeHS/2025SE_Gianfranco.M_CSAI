@@ -3,20 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Predict Round Winner</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
-    <script
-      src="{{ url_for('static', filename='js/scripts.js') }}"
-      defer
-    ></script>
+    <title>CSGO Round Winner Predictor</title>
+    <link {{ url_for('static', filename='css/styles.css') }}" />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
     <header>
-      <h1>Predict Round Winner</h1>
+      <h1>CSAI - A round prediction winner</h1>
     </header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
     <main>{% block content %} {% endblock %}</main>
+    <footer>
+      <p>Powered by Flask & JavaScript</p>
+    </footer>
   </body>
 </html>

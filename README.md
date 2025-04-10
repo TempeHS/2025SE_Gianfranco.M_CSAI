@@ -4,7 +4,13 @@ A machine learning-based predictive model designed to estimate the outcome of a 
 
 ### Getting Started
 
+Running ML model:
+
 Start within 1. Data, view each Jupyter notebook in numerical order, and follow instructions.
+
+Running website:
+
+cd
 
 ### Contact
 

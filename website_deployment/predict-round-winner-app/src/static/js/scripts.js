@@ -1,43 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const predictionForm = document.getElementById("prediction-form");
-  const predictionResult = document.getElementById("prediction-result");
-  const trainingForm = document.getElementById("training-form");
+function validateForm() {
+  let mapName = document.getElementById("map_name").value;
+  let ctMoney = document.getElementById("ct_money").value;
+  let tMoney = document.getElementById("t_money").value;
+  let ctAlive = document.getElementById("ct_alive").value;
+  let tAlive = document.getElementById("t_alive").value;
+  let bombPlanted = document.getElementById("bomb_planted").value;
 
-  predictionForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const formData = new FormData(predictionForm);
+  if (!mapName) {
+    alert("Map name is required");
+    return false;
+  }
 
-    fetch("/predict", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        predictionResult.innerHTML = `Predicted Winner: ${data.winner}`;
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        predictionResult.innerHTML =
-          "ERRORS occurred while making the prediction.";
-      });
-  });
+  if (ctMoney <= 0 || tMoney <= 0) {
+    alert("CT and T money must be positive numbers");
+    return false;
+  }
 
-  trainingForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const formData = new FormData(trainingForm);
+  if (ctAlive < 0 || tAlive < 0) {
+    alert("Players alive must be zero or a positive number!!!");
+    return false;
+  }
 
-    fetch("/train", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        alert(data.message);
-        trainingForm.reset();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("ERRORS occurred while retraining the model.");
-      });
-  });
-});
+  if (bombPlanted !== "0" && bombPlanted !== "1") {
+    alert("Bomb planted must be either 0 or 1!!!!");
+    return false;
+  }
+
+  // All validations passed
+  return true;
+}
