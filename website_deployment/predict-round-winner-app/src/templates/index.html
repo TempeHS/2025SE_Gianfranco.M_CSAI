@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Round Winner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="container">
+        <h1>Predict Round Winner</h1>
+        <form id="prediction-form">
+            <label for="map_name">Map Name (e.g., de_dust2):</label>
+            <input type="text" id="map_name" name="map_name" required>
+
+            <label for="ct_money">Counter-Terrorist Money:</label>
+            <input type="number" id="ct_money" name="ct_money" required>
+
+            <label for="t_money">Terrorist Money:</label>
+            <input type="number" id="t_money" name="t_money" required>
+
+            <label for="ct_players_alive">Counter-Terrorists Alive:</label>
+            <input type="number" id="ct_players_alive" name="ct_players_alive" required>
+
+            <label for="t_players_alive">Terrorists Alive:</label>
+            <input type="number" id="t_players_alive" name="t_players_alive" required>
+
+            <label for="bomb_planted">Has the bomb been planted? (0 = no, 1 = yes):</label>
+            <input type="number" id="bomb_planted" name="bomb_planted" required>
+
+            <button type="submit">Predict Winner</button>
+        </form>
+
+        <div id="prediction-result">
+            <h2>Prediction Result:</h2>
+            <p id="winner"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    {% endblock %}
+</body>
+</html>
